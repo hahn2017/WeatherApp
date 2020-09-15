@@ -83,15 +83,22 @@ createDiv = (className, text, wrap) => {
     wrap.appendChild(fTime);
 }
 
+//show current time
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-window.setInterval(function() {
-    let d = new Date();
+getTime = () => {
+	let d = new Date();
     let dateBlock = document.getElementById("date");
     let timeBlock = document.getElementById("time");
     timeBlock.innerText = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
     dateBlock.innerText = days[d.getDay()] + ", " + months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+}
+
+getTime();
+
+window.setInterval(function() {
+    getTime();
 }, 1000);
 
 
