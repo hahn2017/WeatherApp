@@ -6,7 +6,6 @@
       "scripts": ["background.js"],
       "persistent": true
     },
-    "content_scripts": [{"run_at": "document_start"}],
 	"permissions": ["activeTab", "declarativeContent"],
 	"page_action": {
       "default_popup": "popup.html",
