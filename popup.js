@@ -1,38 +1,48 @@
 let myKey = config.MY_KEY;
-const API_URL_1 = 'https://api.openweathermap.org/data/2.5/weather?id=6087824&appid=' + myKey + '&units=metric';
-const API_URL_5 = 'https://api.openweathermap.org/data/2.5/forecast?id=6087824&appid=' + myKey + '&units=metric';
+
 let country, city, description, icon_url, temp;
+let API_URL_1, API_URL_5;
 
-//current weather
-axios.get(API_URL_1)
-  .then((response)=>{
-    country = response.data.sys.country;
-    city = response.data.name.slice(4, 11);
-    description = response.data.weather[0].description;
-    icon_url = "http://openweathermap.org/img/wn/" + response.data.weather[0].icon + "@2x.png";
-    temp = response.data.main.temp;
-    showCurrent();
-  })
-  .catch((error)=>{
-    console.log(error)
-  })
+const fetchAllData = (position) => {
+    API_URL_1 = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${myKey}&units=metric`;
+    API_URL_5 = `https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${myKey}&units=metric`;
+    fetchCurrentWeather(API_URL_1)
+    fetchForecast(API_URL_5)
+}
 
-//weather forecast
-axios.get(API_URL_5)
-  .then((response)=>{
-      showForecast(response);
-  })
-  .catch((error)=>{
-      console.log(error)
-  })
+// fetch current weather
+const fetchCurrentWeather = async(url) => {
+    try {
+        const response = await fetch(url)
+        const data = await response.json()
+        country = data.sys.country;
+        city = data.name;
+        description = data.weather[0].description;
+        icon_url = "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
+        temp = data.main.temp;
+        showCurrent();
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-showForecast = (res) => {
+// fetch forecast weather
+const fetchForecast = async(url) => {
+    try {
+        const response = await fetch(url)
+        const data = await response.json()
+        showForecast(data);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+showForecast = (data) => {
     for(let i = 0; i < 5; i++){
-        let time = res.data.list[i].dt_txt.slice(11, 16);
-        console.log(res.data.list[i].dt_txt);
-        console.log(time);
-        let imgUrl = "http://openweathermap.org/img/wn/" + res.data.list[i].weather[0].icon + "@2x.png";
-        let temp = parseInt(res.data.list[i].main.temp) + "°C";
+        let time = data.list[i].dt_txt.slice(11, 16);
+        let imgUrl = "http://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png";
+        let temp = parseInt(data.list[i].main.temp) + "°C";
         let currImgWrap = document.getElementById("forecastWrap");
         let foreDiv = document.createElement("div");
         currImgWrap.appendChild(foreDiv);
@@ -102,3 +112,8 @@ window.setInterval(function() {
 }, 1000);
 
 
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(fetchAllData)
+} else {
+    console.log("Geolocation is not supported by this browser.")
+}

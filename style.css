@@ -1,108 +1,113 @@
-body{
-    width:600px;
-    height:300px;
-    text-shadow:1px 1px 6px #333;
-    padding: 0 0;
-    margin: 0 0;
+body {
+  width: 600px;
+  height: 300px;
+  text-shadow: 1px 1px 6px #333;
+  padding: 0 0;
+  margin: 0 0;
 }
 
 #block1 {
-    background-image: url("https://live.staticflickr.com/6133/6019024429_f535b076f8_b.jpg");
-    background-repeat:no-repeat;
-    background-size:cover;
-    float:left;
-    width: 60%;
-    height: 100%;
-    text-align: center;
-    padding: 0 0;
-    margin: 0 0;
+  background-image: url("https://live.staticflickr.com/6133/6019024429_f535b076f8_b.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  float: left;
+  width: 60%;
+  height: 100%;
+  text-align: center;
+  padding: 0 0;
+  margin: 0 0;
 }
 
 #block2 {
-    background-color: rgba(10,10,10,0.9);
-    float:left;
-    width: 40%;
-    height: 100%;
-    text-align: center;
+  background-color: rgba(10, 10, 10, 0.9);
+  float: left;
+  width: 40%;
+  height: 100%;
+  text-align: center;
 }
 
 #city {
-    text-align: left;
-    margin: 20px 20px;
-    font-size: 25px;
-    color: white;
+  text-align: left;
+  margin: 20px 20px;
+  font-size: 3em;
+  color: white;
 }
 
 #temp {
-    margin-top: 17%;
-    margin-right: 2%;
-    margin-bottom: 0%;
-    float:right;
-    font-size: 350%;
-    color: white;
+  margin-top: 17%;
+  margin-right: 2%;
+  margin-bottom: 0%;
+  float: right;
+  font-size: 5em;
+  color: white;
 }
 
 #currTemp {
-    margin-right: 5%;
+  margin-right: 5%;
 }
 
-.clear{
-    clear:both;
-    height:0px;
+.clear {
+  clear: both;
+  height: 0px;
 }
 
 hr {
-    padding: 0;
-    margin: 10% 20px;
-    opacity: 0.6;
+  padding: 0;
+  margin: 10% 20px;
+  opacity: 0.6;
 }
 
 img {
-    margin: -5% 0;
+  margin: -5% 0;
 }
 
 #date {
-    margin-left: 5%;
-    float: left;
-    text-align: center;
-    color: white;
+  font-size: 1em;
+  margin-left: 7%;
+  float: left;
+  text-align: center;
+  color: white;
 }
 
 #time {
-    margin-left: 5%;
-    float: left;
-    text-align: center;
-    color: white;
+  font-size: 3em;
+  margin-left: 5%;
+  float: left;
+  text-align: center;
+  color: white;
 }
 
 #description {
-    color: white;
-    margin: -5% 0;
+  font-size: 2em;
+  color: white;
+  margin: -5% 0;
 }
 
 .f-time {
-    color: white;
-    float: left;
-    text-align: left;
-    padding-left: 12%;
+  font-size: 1.7em;
+  color: white;
+  float: left;
+  text-align: left;
+  padding-left: 12%;
 }
 
 .f-img {
-    float: left;
-    height: 20%;
-    width: 20%;
-    padding-top: 1%;
-    padding-left: 10%;
+  float: left;
+  height: 20%;
+  width: 20%;
+  padding-top: 1%;
+  padding-left: 10%;
 }
 
 .f-temp {
-    color: white;
-    float: left;
-    padding-left: 8%;
+  font-size: 1.7em;
+  color: white;
+  float: left;
+  padding-left: 8%;
 }
 
 .div-sep {
-    padding: 0;
-    margin: 0 25px;
-    opacity: 0.2;
+  padding: 0;
+  margin: 0 25px;
+  opacity: 0.2;
 }
